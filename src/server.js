@@ -3,7 +3,7 @@ const path = require("path");
 // Không thể viết
 // import express from 'express'
 require('dotenv').config();
-console.log(">> Check env: ", process.env);
+// console.log(">> Check env: ", process.env);
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -15,7 +15,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Hello World! ff");
 });
 
 app.get("/abc", (req, res) => {
