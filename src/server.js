@@ -2,8 +2,12 @@ const express = require("express");
 const path = require("path");
 // Không thể viết
 // import express from 'express'
+require('dotenv').config();
+console.log(">> Check env: ", process.env);
+
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 8080;
+const hostname = process.env.HOST_NAME;
 
 // Cấu hình Template Engine
 app.set("views", path.join(__dirname, "views"));
@@ -23,6 +27,6 @@ app.get("/xyz", (req, res) => {
   res.render("sample.ejs");
 });
 
-app.listen(port, () => {
+app.listen(port, hostname, () => {
   console.log(`Example app listening on port ${port}`);
 });
