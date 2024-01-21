@@ -14,6 +14,9 @@ app.set("views", path.join(__dirname, "views"));
 // Chỉ định T.E cụ thể
 app.set("view engine", "ejs");
 
+// Cấu hình static files
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.get("/", (req, res) => {
   res.send("Hello World! ff");
 });
