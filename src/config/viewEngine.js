@@ -3,7 +3,7 @@ const path = require("path");
 const express = require("express");
 
 const configviewEngine = (app) => {
-    console.log("cc: ", path.join('./src', "views"))
+    // console.log("cc: ", path.join('./src', "views"))
     // Cấu hình Template Engine
     app.set("views", path.join('./src', "views"));
     // Chỉ định T.E cụ thể
