@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <style>
+      table {
+      border-collapse: collapse;
+      width: 100%;
+      }
+      th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+      }
+      tr:hover {background-color: #ccc;}
+      .title {
+        font-weight: 600;
+        font-size: 25px;
+        padding-bottom: 10px;
+      }
+
+      </style>
+      
+</head>
+<body>
+    <div class="topnav">
+        <a class="active" href="/">Home</a>
+        <a href="/create">Create User</a>
+
+    </div>
+
+    <div class="table_container">
+<!-- Convert ra trước vì html không in được object -->
+      <div class="title">List Users</div>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Email</th>
+          <th>Name</th>
+          <th>City</th>
+          <th>Actions</th>
+        </tr>
+        <!-- For each thao tác tốt với đối tượng hơn for truyền thống -->
+        <% listUsers.forEach(function(user, index) { %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.email %></td>
+            <td><%= user.name %></td>
+            <td><%= user.city %></td>
+            <td>
+              <a href="/update/<%= user.id %>"> Edit </a>
+              <form action="/delete_user/<%= user.id %>" method="post">
+                <button> Delete </button>
+              </form>
+            </td>
+          </tr>
+        <% }); %>
+      </table>
+    </div>
+    
+</body>
+</html>

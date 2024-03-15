@@ -14,20 +14,15 @@ const app = express();
 const port = process.env.PORT || 8080;
 const hostname = process.env.HOST_NAME;
 
+// Cấu hình req.body
+app.use(express.json()) // for json;
+app.use(express.urlencoded({extended: true})) // for form data;
+
 // Cấu hình
 configviewEngine(app);
 
-app.use('/v1', webRoutes);  // các đường link trong webroutes sẽ đứng sau '/'
+app.use('', webRoutes);  // các đường link trong webroutes sẽ đứng sau '/'
 
-
-// A simple SELECT query
-connection.query(
-  'SELECT * from Users u',
-  function (err, results, fields) {
-    console.log(">>> Ket qua: ", results); // results contains rows returned by server
-    // console.log(">>> truong dulieu: ", fields); // fields contains extra meta data about results, if available
-  }
-);
 
 app.listen(port, hostname, () => {
   console.log(`Example app listening on port ${port}`);

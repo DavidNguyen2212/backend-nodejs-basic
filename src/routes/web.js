@@ -1,9 +1,18 @@
 const express = require("express");
-const {getHomePage, getABC, getHoidanIT} = require('../controllers/homeController')
+const {getHomePage, getABC, getHoidanIT, postCreateNewuser, getCreatePage, getUpdatePage, postUpdateUser, postDeleteUser, postHandleRemoveUser} = require('../controllers/homeController');
 const router = express.Router();
 
 router.get("/", getHomePage);
 router.get("/abc", getABC);
 router.get("/xyz", getHoidanIT);
+router.get("/create", getCreatePage);
+router.get("/update/:userId", getUpdatePage);
+
+router.post("/create_user", postCreateNewuser);
+router.post("/update_user", postUpdateUser);
+router.post("/delete_user/:userId", postDeleteUser);
+router.post("/delete_user", postHandleRemoveUser);
+
+
 
 module.exports = router;

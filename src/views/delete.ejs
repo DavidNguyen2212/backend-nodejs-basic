@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+    <%= JSON.stringify(userEdit)%>
+    <div class="topnav">
+        <a href="/">Home</a>
+        <a href="/create">Delete a User</a>
+        <!-- <a class="active" >Update a User</a> -->
+    </div>
+
+    <div class="form_add_new">
+      <!-- Sau khi submit sẽ chuyển đến route, mặc định method get, chỉnh thành post -->
+      <form action="/delete_user" method="post"> 
+      <fieldset>
+        <legend>Update a User</legend>
+        <div class="input_group d-none">
+          <label>ID: </label>
+          <!-- sử dụng thuộc tính name cho ô input để json hóa -->
+          <input type="text" name="userId" value="<%= userEdit.id %>"/>  
+        </div>
+        <div class="input_group">
+          <label>Are you sure to delete this Email: </label>
+          <!-- sử dụng thuộc tính name cho ô input để json hóa -->
+          <input type="text" name="email" value="<%= userEdit.email %>"/>  
+        </div>
+        
+        <div>
+          <button> Confirm </button>
+        </div>
+      </fieldset>
+      </form>
+    </div>
+</body>
+</html>

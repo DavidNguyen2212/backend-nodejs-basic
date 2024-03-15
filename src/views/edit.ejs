@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+    <%= JSON.stringify(userEdit)%>
+    <div class="topnav">
+        <a href="/">Home</a>
+        <a href="/create">Create User</a>
+        <!-- <a class="active" >Update a User</a> -->
+    </div>
+
+    <div class="form_add_new">
+      <!-- Sau khi submit sẽ chuyển đến route, mặc định method get, chỉnh thành post -->
+      <form action="/update_user" method="post"> 
+      <fieldset>
+        <legend>Update a User</legend>
+        <div class="input_group d-none">
+          <label>Email: </label>
+          <!-- sử dụng thuộc tính name cho ô input để json hóa -->
+          <input type="text" name="userId" value="<%= userEdit.id %>"/>  
+        </div>
+        <div class="input_group">
+          <label>Email: </label>
+          <!-- sử dụng thuộc tính name cho ô input để json hóa -->
+          <input type="text" name="email" value="<%= userEdit.email %>"/>  
+        </div>
+        <div class="input_group">
+          <label>Name: </label>
+          <input type="text" name="name" value="<%= userEdit.name %>"/>
+        </div>
+        <div class="input_group">
+          <label>City: </label>
+          <input type="text" name="city" value="<%= userEdit.city %>"/>
+        </div>
+        <div>
+          <button> Save </button>
+        </div>
+      </fieldset>
+      </form>
+    </div>
+</body>
+</html>
