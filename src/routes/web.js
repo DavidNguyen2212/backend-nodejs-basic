@@ -2,6 +2,7 @@ const express = require("express");
 const {getHomePage, getABC, getHoidanIT, postCreateNewuser, getCreatePage, getUpdatePage, postUpdateUser, postDeleteUser, postHandleRemoveUser} = require('../controllers/homeController');
 const router = express.Router();
 
+// Sau này muốn biết một đống code hoạt động thế nào thì đi từ route.js
 router.get("/", getHomePage);
 router.get("/abc", getABC);
 router.get("/xyz", getHoidanIT);

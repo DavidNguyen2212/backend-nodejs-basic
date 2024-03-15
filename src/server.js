@@ -1,14 +1,13 @@
 require('dotenv').config();
-// console.log(">> Check env: ", process.env);
 const express = require("express");
 const path = require("path");
 // Get the client
 const connection = require("./config/database")
-// Không thể viết // import express from 'express'
 
 // nhập khẩu tệp config
 const configviewEngine = require('./config/viewEngine');
 const webRoutes = require('./routes/web');
+const { default: mongoose } = require('mongoose');
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -23,7 +22,17 @@ configviewEngine(app);
 
 app.use('', webRoutes);  // các đường link trong webroutes sẽ đứng sau '/'
 
+// Run 
+(async ()=> {
+  try {
+    await connection();
+    app.listen(port, hostname, () => {
+      console.log(`Backend app listening on port ${port}`);
+    });
+  }
+  catch (error) {
+    console.log(">>> Error connection to db: ", error)
+  }
+})()
 
-app.listen(port, hostname, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+
